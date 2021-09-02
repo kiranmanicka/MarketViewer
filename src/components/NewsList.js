@@ -2,6 +2,7 @@ import axios from 'axios'
 import React,{useState,useEffect} from 'react'
 
 import { Link } from 'react-router-dom';
+import './NewsList.css';
 
 
 const NewsList=()=>{
@@ -25,15 +26,15 @@ const NewsList=()=>{
     },[])
 
     return (
-        <div>
-            <div><Link to='/'>Back</Link></div>
+        <div classNam="News">
+            <div className="back"><Link to='/'>Back</Link></div>
             {loading?<div>loading</div>:<div>no longer loading</div>}
             {articles.map((result,key)=>(
             <div>
-          <p key={key}>{result.headline}</p>
-          <p key={key+key}>{result.summary}</p>
-          <img src={result.image} alt="new"/>
-         <a href={result.url}>Visit article</a>
+          <p className="headline"key={key}>{result.headline}</p>
+          <p className="summary"key={key+key}>{result.summary}</p>
+          <img className="image" src={result.image} alt="new"/>
+         <a className="url" href={result.url}>Visit article</a>
             </div>
         ))}
         </div>

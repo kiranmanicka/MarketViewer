@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import './StockPage.css';
+
 const socket = new WebSocket('wss://ws.finnhub.io?token=btnth1n48v6p0j27i8k0');
 
 function StockPage(props) {
@@ -66,9 +68,11 @@ function StockPage(props) {
   
 
   return (
-    <div className="App">
-      <div><Link to='/search'>Back</Link></div>
-      {loading?<div>loading</div>:<div>
+    <>
+      <div className="back2"><Link to='/search'>Back</Link></div>
+      {loading?<div>loading</div>:
+      <div className="data">
+        <h1>Info:</h1>
         <p>Name: {results.name}</p>
         <p>Current Price: {currentprice}</p>
         <p>High Price of the Day: {price.h}</p>
@@ -82,9 +86,10 @@ function StockPage(props) {
         <p>Ticker: {results.ticker}</p>
         <p>Web URL: {results.weburl}</p>
         <img src={results.logo} alt="new"/>
-        <p>This Past Week's News for {stock}</p>
+        <p className="newsArt">This Past Week's News for {stock}</p>
         {news.map((news,key)=>(
-          <div>
+          
+          <div className="article">
           
           <p>{news.headline}</p>
           <img src={news.image} alt="new"/>
@@ -93,9 +98,10 @@ function StockPage(props) {
           </div>
         ))}
 
-        </div>}
+        </div>
+    }
       
-    </div>
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import './Search.css';
 
 function Search() {
   const [search,setSearch]=useState('')
@@ -28,20 +29,18 @@ function Search() {
   },[search])
 
   return (
-    <div className="App">
-      <div><Link to='/'>Back</Link></div>
-      <div className="container searchApp">
-        <h2 className="title is-2 has-text-centered">
-          Stocks
-        </h2>
-        <input type="text" value ={search} onChange={searchOnChange} />
-
+    <>
+      <div className="searchApp">
+        <h3 className="stocks">
+          Stock Viewer
+        </h3>
+        <div className="news"><Link to='/news'>News</Link></div>
+        <input className="input" type="text" value ={search} onChange={searchOnChange} placeholder='Search' />
         {results.map((result,key)=>(
-          <div><Link to={`/stock/:${result.symbol}`}>{result.symbol}</Link></div>
+          <div className="results"><Link to={`/stock/:${result.symbol}`}>{result.symbol}</Link></div>
         ))}
-        
       </div>
-    </div>
+    </>
   );
 }
 
