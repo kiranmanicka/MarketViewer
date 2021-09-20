@@ -1,1 +1,1 @@
-Simple React App for view current Market Conditions
+Simple React App for viewing current Market Conditions.
